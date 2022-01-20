@@ -1,0 +1,27 @@
+<div class="shadow-sm p-3 mb-3 bg-white rounded p-3">
+  <h1 class="display-4">Recipes List</h1>
+</div>
+  <a href="/recipes/add" class="btn btn-primary mb-3 float-right">Add recipe</a>
+<table class="table table-striped p-3">
+  <thead>
+    <tr>
+      <th id="index">No.</th>
+      <th id="title" class="text-center">Title</th>
+      <th id="buttons"></th>
+    </tr>
+  </thead>
+  <tbody>
+    <% recipes.forEach(function(recipe) { %>
+    <tr>
+      <td><%= recipe.id %></td>
+      <td class="w-50 p-3 text-center"><%= recipe.title %></td>
+      <td class="d-flex justify-content-end">
+        <a href=" /recipes/edit/<%= recipe.id %>" class="btn btn-primary mr-3">Edit</a>
+        <form method="POST" action="/recipes/delete/<%= recipe.id %>">
+          <input value="Delete" type="submit" class="btn btn-danger">
+        </form>
+      </td>
+    </tr>
+    <% }) %>
+  </tbody>
+</table>

@@ -1,0 +1,82 @@
+<head>
+  <title>Ranking</title>
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+
+</head>
+
+<body>
+  <h4><a href="#" class="brand-logo red-text">Ranking</a></h4>
+  <div class="options">
+    <button id="openModal" class="waves-effect waves-light btn">Add</button>
+    <button id="sort" class="waves-effect waves-light btn"><div class="btn__content">SORT<i class="material-icons">{{sortArrow}}</i></div></button>
+  </div>
+  <table>
+    <thead>
+      <tr>
+        <th id="index">No.</th>
+        <th id="name" class="text-center">Name</th>
+        <th id="buttons"></th>
+      </tr>
+    </thead>
+    <tbody>
+      {{#each players}}
+      <tr>
+        <td>#{{incremented @index}}</td>
+        <td>{{name}}</td>
+        <td class="rate">
+          <div class="likes">
+            {{likes}}
+            <button id="like" class="waves-effect waves-light btn"><i class="material-icons">thumb_up</i></button>
+          </div>
+          <div class="score">
+            {{score}}
+          </div>
+          <div class="dislikes">
+            <button id="dislike" class="red waves-effect waves-light btn"><i class="material-icons">thumb_down</i></button>
+            {{dislikes}}
+          </div>
+          <div class="delete">
+            <button id="remove" class="delete-note player__remove btn red waves-effect waves-light white-text">Delete</button>
+          </div>
+        </td>
+      </tr>
+      {{/each}}
+    </tbody>
+  </table>
+
+  {{> add}}
+
+
+</body>
+
+<template name="player">
+  <div class="player">
+    <div class="name">{{name}}</div>
+    <div class="rate">
+      <div class="likes">
+        <button id="like" class="waves-effect waves-light btn"><i class="material-icons">thumb_up</i></button>
+        {{likes}}
+      </div>
+      <div class="dislikes">
+        {{dislikes}}
+        <button id="dislike" class="red waves-effect waves-light btn"><i class="material-icons">thumb_down</i></button>
+      </div>
+      <div class="delete">
+        <button id="remove" class="delete-note player__remove btn red waves-effect waves-light white-text">Delete</button>
+      </div>
+    </div>
+  </div>
+</template>
+
+<template name="add">
+  <div id="myModal" class="modal">
+    <div class="modal-content">
+      <span id="close" class="close">&times;</span>
+      <h4>Add player</h4>
+      <form action="" class="add-form">
+        <input type="text" name="name" placeholder="Add name..." />
+        <button type="submit" class="waves-effect waves-light btn right">Add player</button>
+      </form>
+    </div>
+  </div>
+</template>
